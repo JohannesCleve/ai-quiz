@@ -18,9 +18,18 @@ class Home extends Component
     #[Rule('required', message: 'Please give a topic for the quiz.')]
     public string $topic = '';
 
+    public Collection $quizzes;
+
     public array $stats;
 
     public function mount()
+    {
+        $this->quizzes = Quiz::orderBy('created_at', 'desc')->get();
+
+        $this->setStats();
+    }
+
+    protected function setStats(): void
     {
         $this->stats = [
             [

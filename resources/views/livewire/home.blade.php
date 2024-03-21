@@ -13,10 +13,10 @@
 
     <livewire:statistics :stats="$stats" />
 
-    <div class="flex flex-wrap justify-center gap-8 bg-slate-200 shadow p-16 rounded-xl">
-        @for($i = 0; $i < 12; $i++)
-            <livewire:quiz-card :key="$i" />
-        @endfor
+    <div class="grid grid-cols-3 gap-8 bg-slate-200 shadow p-16 rounded-xl">
+        @foreach($quizzes as $quiz)
+            <livewire:quiz-card :quiz="$quiz" :key="$quiz->slug" />
+        @endforeach
     </div>
 
     <x-modal
