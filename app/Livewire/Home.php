@@ -17,6 +17,7 @@ class Home extends Component
     public bool $showCreateQuizModal = false;
 
     #[Rule('required', message: 'Please give a topic for the quiz.')]
+    #[Rule('max:50', message: 'The topic should not be more than 50 characters.')]
     public string $topic = '';
 
     public Collection $quizzes;
@@ -25,7 +26,7 @@ class Home extends Component
 
     public function mount()
     {
-        $this->quizzes = Quiz::orderBy('created_at', 'desc')->get();
+        $this->quizzes = Quiz::whereNull('archived_at')->orderBy('created_at', 'desc')->get();
 
         $this->setStats();
     }
@@ -41,7 +42,7 @@ class Home extends Component
             ],
             [
                 'title' => 'Questions',
-                'value' => Question::count(),
+                'value' => $this->quizzes->map(fn(Quiz $quiz) => $quiz->questions->count())->sum(),
                 'icon' => 'o-light-bulb',
                 'tooltip' => 'Total number of questions in all quizzes',
             ],

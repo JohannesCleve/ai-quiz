@@ -15,5 +15,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', Home::class);
+Route::get('/', Home::class)->name('home');
 Route::get('/{quiz:slug}', QuizPage::class)->name('quiz-page');

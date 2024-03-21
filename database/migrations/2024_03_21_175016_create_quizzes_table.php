@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('topic');
             $table->json('messages');
             $table->integer('points')->default(0);
+            $table->dateTime('archived_at')->nullable();
             $table->timestamps();
         });
     }

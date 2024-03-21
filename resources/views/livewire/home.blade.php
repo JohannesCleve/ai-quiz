@@ -14,6 +14,12 @@
     <livewire:statistics :stats="$stats" />
 
     <div class="grid grid-cols-3 gap-8 bg-slate-200 shadow p-16 rounded-xl">
+        @if($quizzes->isEmpty())
+            <div class="text-center text-slate-500 col-span-3">
+                No quizzes found. Click the "New Quiz" button to create one.
+            </div>
+        @endif
+
         @foreach($quizzes as $quiz)
             <livewire:quiz-card :quiz="$quiz" :key="$quiz->slug" />
         @endforeach
