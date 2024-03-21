@@ -11,7 +11,7 @@
         </x-slot:actions>
     </x-header>
 
-    <livewire:statistics />
+    <livewire:statistics :stats="$stats" />
 
     <div class="flex flex-wrap justify-center gap-8 bg-slate-200 shadow p-16 rounded-xl">
         @for($i = 0; $i < 12; $i++)
@@ -26,10 +26,11 @@
         class="backdrop-blur"
     >
         <x-input
-            wire:model="quizTitle"
-            placeholder="The theme of your quiz"
+            wire:model="topic"
+            placeholder="The topic of your quiz"
             icon="o-academic-cap"
-            hint="Questions will be based on this theme"
+            hint="Questions will be based on this topic"
+            wire:keydown.enter="createQuiz"
         />
         <x-slot:actions>
             <x-button label="Cancel" wire:click="hideShowQuizModal" />
