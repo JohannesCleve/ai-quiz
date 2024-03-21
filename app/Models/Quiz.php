@@ -10,7 +10,7 @@ class Quiz extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['slug', 'topic', 'messages'];
+    protected $fillable = ['slug', 'topic', 'messages', 'points'];
 
     protected $casts = [
         'messages' => 'array',

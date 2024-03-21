@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
         $quizzes = Quiz::factory(10)->create();
 
         $quizzes->each(function (Quiz $quiz) {
-            Question::factory(5)->create([
+            Question::factory(rand(5, 27))->create([
                 'quiz_id' => $quiz->id,
             ]);
         });

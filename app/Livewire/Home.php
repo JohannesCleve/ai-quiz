@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\Question;
 use App\Models\Quiz;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
@@ -34,19 +35,19 @@ class Home extends Component
         $this->stats = [
             [
                 'title' => 'Quizzes',
-                'value' => 44, // TODO: Check the total number of questions.
+                'value' => $this->quizzes->count(),
                 'icon' => 'o-academic-cap',
                 'tooltip' => 'Number of quizzes you have created'
             ],
             [
                 'title' => 'Questions',
-                'value' => 144, // TODO: Check the total number of questions.
+                'value' => Question::count(),
                 'icon' => 'o-light-bulb',
                 'tooltip' => 'Total number of questions in all quizzes',
             ],
             [
                 'title' => 'Points',
-                'value' => 10, // TODO: Check the total number of points.
+                'value' => $this->quizzes->sum('points'),
                 'icon' => 'o-trophy',
                 'tooltip' => 'Total number of points you have earned',
             ]

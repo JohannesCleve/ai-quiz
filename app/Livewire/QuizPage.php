@@ -29,7 +29,7 @@ class QuizPage extends Component
             ],
             [
                 'title' => 'Points',
-                'value' => 10, // TODO: Check the total points in this quiz.
+                'value' => $this->quiz->points,
                 'icon' => 'o-trophy',
                 'tooltip' => 'Total number of points you have earned in this quiz',
             ]

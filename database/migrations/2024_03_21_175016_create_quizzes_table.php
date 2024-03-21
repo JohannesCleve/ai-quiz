@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->string('topic');
             $table->json('messages');
+            $table->integer('points')->default(0);
             $table->timestamps();
         });
     }
