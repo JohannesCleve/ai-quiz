@@ -16,13 +16,14 @@ class QuizPage extends Component
 
     public function mount(Quiz $quiz): void
     {
-        $this->quiz = $quiz;
+        $this->quiz = $quiz->load('questions');
+
         $this->topic = $quiz->topic;
 
         $this->stats = [
             [
                 'title' => 'Questions',
-                'value' => 5, // TODO: Check the number of questions in this quiz.
+                'value' => $this->quiz->questions->count(),
                 'icon' => 'o-light-bulb',
                 'tooltip' => 'Total number of questions in this quiz',
             ],
