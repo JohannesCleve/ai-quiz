@@ -2,6 +2,8 @@
     <x-header :title="$topic" separator progress-indicator>
 
         <x-slot:actions>
+            <x-button label="Home" link="/" icon="o-home" />
+
             <x-button
                 label="Add Questions"
                 icon="o-plus"
