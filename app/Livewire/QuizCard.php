@@ -8,6 +8,7 @@ use Livewire\Component;
 class QuizCard extends Component
 {
     public Quiz $quiz;
+
     public function render()
     {
         return view('livewire.quiz-card');
