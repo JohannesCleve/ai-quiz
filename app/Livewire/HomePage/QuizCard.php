@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\HomePage;
 
 use App\Models\Quiz;
 use Livewire\Component;
@@ -11,6 +11,6 @@ class QuizCard extends Component
 
     public function render()
     {
-        return view('livewire.quiz-card');
+        return view('livewire.home-page.quiz-card');
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\HomePage;
 
 use App\Models\Quiz;
 use Illuminate\Support\Str;
@@ -47,6 +47,6 @@ class CreateQuiz extends Component
 
     public function render()
     {
-        return view('livewire.create-quiz');
+        return view('livewire.home-page.create-quiz');
     }
 }

@@ -3,12 +3,7 @@
         <x-slot:actions>
             <x-button label="Home" link="/" icon="o-home" />
 
-            <x-button
-                label="Add Questions"
-                icon="o-plus"
-                class="btn-primary"
-                wire:click="addQuestions"
-            />
+            <livewire:quiz-page.add-questions :quiz="$quiz" />
 
             <livewire:quiz-page.actions :quiz="$quiz" />
         </x-slot:actions>

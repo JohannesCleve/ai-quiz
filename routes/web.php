@@ -1,6 +1,6 @@
 <?php
 
-use App\Livewire\Home;
+use App\Livewire\HomePage;
 use App\Livewire\QuizPage;
 use Illuminate\Support\Facades\Route;
 
@@ -15,5 +15,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', Home::class)->name('home');
+Route::get('/', HomePage::class)->name('home-page');
 Route::get('/{quiz:slug}', QuizPage::class)->name('quiz-page');

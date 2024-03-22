@@ -25,6 +25,6 @@
     @endif
 
     @foreach($quizzes as $quiz)
-        <livewire:quiz-card :quiz="$quiz" :key="$quiz->slug" />
+        <livewire:home-page.quiz-card :quiz="$quiz" :key="$quiz->slug" />
     @endforeach
 </div>

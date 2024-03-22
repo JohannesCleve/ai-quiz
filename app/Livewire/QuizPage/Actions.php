@@ -69,7 +69,7 @@ class Actions extends Component
             'archived_at' => now(),
         ]);
 
-        $this->redirect(route('home'));
+        $this->redirect(route('home-page'));
     }
 
     protected function unarchiveQuiz(): void
@@ -78,14 +78,14 @@ class Actions extends Component
             'archived_at' => null,
         ]);
 
-        $this->redirect(route('home'));
+        $this->redirect(route('home-page'));
     }
 
     protected function removeQuiz(): void
     {
         $this->quiz->delete();
 
-        $this->redirect(route('home'));
+        $this->redirect(route('home-page'));
     }
 
     protected function resetQuizPoints(): void

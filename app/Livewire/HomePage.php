@@ -10,7 +10,7 @@ use Livewire\Attributes\Rule;
 use Livewire\Component;
 use Mary\Traits\Toast;
 
-class Home extends Component
+class HomePage extends Component
 {
     use Toast;
 
@@ -18,6 +18,6 @@ class Home extends Component
 
     public function render()
     {
-        return view('livewire.home');
+        return view('livewire.home-page');
     }
 }

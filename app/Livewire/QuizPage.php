@@ -15,11 +15,6 @@ class QuizPage extends Component
         $this->quiz = $quiz->load('questions');
     }
 
-    public function addQuestions()
-    {
-        dd('Add questions');
-    }
-
     public function render()
     {
         return view('livewire.quiz-page');
