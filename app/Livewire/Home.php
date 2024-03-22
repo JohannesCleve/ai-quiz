@@ -14,8 +14,6 @@ class Home extends Component
 {
     use Toast;
 
-    public Collection $quizzes;
-
     public array $stats;
 
     public string $selectedTab = 'active';
