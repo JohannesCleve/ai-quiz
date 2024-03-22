@@ -12,7 +12,11 @@
             />
 
             <x-dropdown>
-                <x-menu-item title="Archive" icon="o-archive-box" wire:click="showArchiveModal" />
+                @if($quiz->archived)
+                    <x-menu-item title="Unarchive" icon="o-archive-box" wire:click="showUnarchiveModal" />
+                @else
+                    <x-menu-item title="Archive" icon="o-archive-box" wire:click="showArchiveModal" />
+                @endif
                 <x-menu-item title="Remove" icon="o-trash" wire:click="showRemoveModal" />
                 <x-menu-item title="Reset points" icon="o-arrow-path" wire:click="showResetPointsModal" />
             </x-dropdown>

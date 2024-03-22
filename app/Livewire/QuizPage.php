@@ -54,6 +54,13 @@ class QuizPage extends Component
         $this->showModal = true;
     }
 
+    public function showUnarchiveModal(): void
+    {
+        $this->modalMessage = 'Are you sure you want to unarchive this quiz?';
+        $this->modalAction = 'Unarchive';
+        $this->showModal = true;
+    }
+
     public function showRemoveModal(): void
     {
         $this->modalMessage = 'Are you sure you want to remove this quiz?';
@@ -79,6 +86,8 @@ class QuizPage extends Component
     {
         if($this->modalAction === 'Archive') {
             $this->archiveQuiz();
+        } elseif($this->modalAction === 'Unarchive') {
+            $this->unarchiveQuiz();
         } elseif($this->modalAction === 'Remove') {
             $this->removeQuiz();
         } elseif($this->modalAction === 'Reset Points') {
@@ -90,6 +99,15 @@ class QuizPage extends Component
     {
         $this->quiz->update([
             'archived_at' => now(),
+        ]);
+
+        $this->redirect(route('home'));
+    }
+
+    protected function unarchiveQuiz(): void
+    {
+        $this->quiz->update([
+            'archived_at' => null,
         ]);
 
         $this->redirect(route('home'));
