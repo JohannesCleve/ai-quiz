@@ -24,6 +24,8 @@ class Home extends Component
 
     public array $stats;
 
+    public string $selectedTab = 'active';
+
     public function mount()
     {
         $this->quizzes = Quiz::whereNull('archived_at')->orderBy('created_at', 'desc')->get();

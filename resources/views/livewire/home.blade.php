@@ -13,17 +13,25 @@
 
     <livewire:statistics :stats="$stats" />
 
-    <div class="grid grid-cols-3 gap-8 bg-slate-200 shadow p-16 rounded-xl">
-        @if($quizzes->isEmpty())
-            <div class="text-center text-slate-500 col-span-3">
-                No quizzes found. Click the "New Quiz" button to create one.
-            </div>
-        @endif
+        <x-tabs wire:model="selectedTab">
+            <x-tab name="active" label="Active" icon="o-bolt">
+                <div class="grid grid-cols-3 gap-8 bg-slate-200 shadow p-16 rounded-xl">
+                    @if($quizzes->isEmpty())
+                        <div class="text-center text-slate-500 col-span-3">
+                            No quizzes found. Click the "New Quiz" button to create one.
+                        </div>
+                    @endif
 
-        @foreach($quizzes as $quiz)
-            <livewire:quiz-card :quiz="$quiz" :key="$quiz->slug" />
-        @endforeach
-    </div>
+                    @foreach($quizzes as $quiz)
+                        <livewire:quiz-card :quiz="$quiz" :key="$quiz->slug" />
+                    @endforeach
+                </div>
+            </x-tab>
+            <x-tab name="archived" label="Archived" icon="o-archive-box">
+                <div>Tricks</div>
+            </x-tab>
+        </x-tabs>
+
 
     <x-modal
         wire:model="showCreateQuizModal"
