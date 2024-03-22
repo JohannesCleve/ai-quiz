@@ -5,7 +5,7 @@
         </x-slot:actions>
     </x-header>
 
-    <livewire:statistics :stats="$stats" />
+    <livewire:home-page.statistics />
 
     <x-tabs wire:model="selectedTab">
         <x-tab name="active" label="Active" icon="o-bolt">
