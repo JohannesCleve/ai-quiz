@@ -10,13 +10,9 @@ class QuizPage extends Component
 {
     public Quiz $quiz;
 
-    public string $topic;
-
     public function mount(Quiz $quiz): void
     {
         $this->quiz = $quiz->load('questions');
-
-        $this->topic = $quiz->topic;
     }
 
     public function addQuestions()

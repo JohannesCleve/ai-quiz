@@ -1,5 +1,5 @@
 <div>
-    <x-header :title="$topic" separator progress-indicator>
+    <x-header :title="$quiz->topic" separator progress-indicator>
         <x-slot:actions>
             <x-button label="Home" link="/" icon="o-home" />
 
