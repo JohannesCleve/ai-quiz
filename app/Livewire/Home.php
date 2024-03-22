@@ -28,7 +28,7 @@ class Home extends Component
 
     public function mount()
     {
-        $this->quizzes = Quiz::whereNull('archived_at')->orderBy('created_at', 'desc')->get();
+        $this->quizzes = Quiz::active()->orderBy('created_at', 'desc')->get();
 
         $this->setStats();
     }
