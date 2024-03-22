@@ -20,31 +20,33 @@ class Home extends Component
 
     public string $selectedTab = 'active';
 
-    public function mount()
+    public function mount(): void
     {
-        $this->quizzes = Quiz::active()->orderBy('created_at', 'desc')->get();
+        $quizCount = Quiz::active()->count();
+        $questionCount = Quiz::active()->withCount('questions')->get()->sum('questions_count');
+        $pointsSum = Quiz::active()->sum('points');
 
-        $this->setStats();
+        $this->setStats($quizCount, $questionCount, $pointsSum);
     }
 
-    protected function setStats(): void
+    protected function setStats(int $quizCount, int $questionCount, int $pointsSum): void
     {
         $this->stats = [
             [
                 'title' => 'Quizzes',
-                'value' => $this->quizzes->count(),
+                'value' => $quizCount,
                 'icon' => 'o-academic-cap',
                 'tooltip' => 'Number of quizzes you have created'
             ],
             [
                 'title' => 'Questions',
-                'value' => $this->quizzes->map(fn(Quiz $quiz) => $quiz->questions->count())->sum(),
+                'value' => $questionCount,
                 'icon' => 'o-light-bulb',
                 'tooltip' => 'Total number of questions in all quizzes',
             ],
             [
                 'title' => 'Points',
-                'value' => $this->quizzes->sum('points'),
+                'value' => $pointsSum,
                 'icon' => 'o-trophy',
                 'tooltip' => 'Total number of points you have earned',
             ]
