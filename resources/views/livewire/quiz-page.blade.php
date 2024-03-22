@@ -14,5 +14,5 @@
         </x-slot:actions>
     </x-header>
 
-    <livewire:statistics :stats="$stats" />
+    <livewire:quiz-page.statistics :quiz="$quiz" />
 </div>
