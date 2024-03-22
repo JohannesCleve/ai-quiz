@@ -9,13 +9,13 @@ use Livewire\Component;
 
 class CreateQuiz extends Component
 {
-    public bool $showCreateQuizModal = false;
+    public bool $showModal = false;
 
     #[Rule('required', message: 'Please give a topic for the quiz.')]
     #[Rule('max:50', message: 'The topic should not be more than 50 characters.')]
     public string $topic = '';
 
-    public function createQuiz(): void
+    public function create(): void
     {
         $this->validate();
 
@@ -34,15 +34,15 @@ class CreateQuiz extends Component
         ]);
 
         $this->topic = '';
-        $this->showCreateQuizModal = false;
+        $this->showModal = false;
 
         $this->redirect(route('quiz-page', $quiz->slug));
     }
 
-    public function hideShowQuizModal(): void
+    public function hideModal(): void
     {
         $this->topic = '';
-        $this->showCreateQuizModal = false;
+        $this->showModal = false;
     }
 
     public function render()

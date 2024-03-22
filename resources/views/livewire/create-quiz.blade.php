@@ -1,13 +1,13 @@
 <div>
     <x-button
         label="New Quiz"
-        @click="$wire.showCreateQuizModal = true"
+        @click="$wire.showModal = true"
         icon="o-plus"
         class="btn-primary"
     />
 
     <x-modal
-        wire:model="showCreateQuizModal"
+        wire:model="showModal"
         title="Create Quiz"
         persistent
         class="backdrop-blur"
@@ -17,11 +17,11 @@
             placeholder="The topic of your quiz"
             icon="o-academic-cap"
             hint="Questions will be based on this topic"
-            wire:keydown.enter="createQuiz"
+            wire:keydown.enter="create"
         />
         <x-slot:actions>
-            <x-button label="Cancel" wire:click="hideShowQuizModal" />
-            <x-button label="Create" wire:click="createQuiz" class="btn-success" />
+            <x-button label="Cancel" wire:click="hideModal" />
+            <x-button label="Create" wire:click="create" class="btn-success" />
         </x-slot:actions>
     </x-modal>
 </div>
