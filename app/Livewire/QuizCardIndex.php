@@ -15,9 +15,9 @@ class QuizCardIndex extends Component
     public function mount(string $type)
     {
         if ($type === 'active') {
-            $this->quizzes = Quiz::active()->get();
+            $this->quizzes = Quiz::active()->orderBy('created_at', 'desc')->get();
         } else {
-            $this->quizzes = Quiz::archived()->get();
+            $this->quizzes = Quiz::archived()->orderBy('archived_at', 'desc')->get();
         }
     }
 
