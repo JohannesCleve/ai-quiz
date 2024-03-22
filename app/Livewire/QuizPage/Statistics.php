@@ -3,6 +3,7 @@
 namespace App\Livewire\QuizPage;
 
 use App\Models\Quiz;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class Statistics extends Component
@@ -18,8 +19,11 @@ class Statistics extends Component
         $this->setStatistics();
     }
 
+    #[On('questions.answered')]
     public function setStatistics(): void
     {
+        $points = $this->quiz->points;
+
         $this->statistics = [
             [
                 'title' => 'Questions',
@@ -29,7 +33,7 @@ class Statistics extends Component
             ],
             [
                 'title' => 'Points',
-                'value' => $this->quiz->points,
+                'value' => $points,
                 'icon' => 'o-trophy',
                 'tooltip' => 'Total number of points you have earned in this quiz',
             ]

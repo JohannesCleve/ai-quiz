@@ -10,4 +10,6 @@
     </x-header>
 
     <livewire:quiz-page.statistics :quiz="$quiz" />
+
+    <livewire:quiz-page.questions :quiz="$quiz" />
 </div>
