@@ -1,3 +1,5 @@
+![Alt text](ai_quiz.png)
+
 ## AI Quiz
 
 AI Quiz is a simple web application that allows users to create a quiz on any topic.
