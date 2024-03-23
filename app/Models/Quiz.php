@@ -11,10 +11,9 @@ class Quiz extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['slug', 'topic', 'messages', 'points', 'archived_at'];
+    protected $fillable = ['slug', 'topic', 'points', 'archived_at'];
 
     protected $casts = [
-        'messages' => 'array',
         'archived_at' => 'datetime',
         'created_at' => 'datetime',
         'updated_at' => 'datetime',

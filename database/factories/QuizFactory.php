@@ -19,7 +19,6 @@ class QuizFactory extends Factory
         return [
             'slug' => $this->faker->unique()->slug,
             'topic' => $this->faker->sentence,
-            'messages' => [],
             'points' => rand(0, 100),
         ];
     }
