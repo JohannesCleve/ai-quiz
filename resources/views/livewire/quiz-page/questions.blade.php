@@ -25,7 +25,7 @@
                 wire:loading.attr="disabled"
             />
         @else
-            This was the last question.
+            This is the last question.
         @endif
     </div>
 </div>

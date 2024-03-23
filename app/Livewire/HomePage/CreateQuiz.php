@@ -2,8 +2,11 @@
 
 namespace App\Livewire\HomePage;
 
+use App\Jobs\GenerateQuestionsJob;
 use App\Models\Quiz;
+use App\Services\QuestionsService;
 use Illuminate\Support\Str;
+use Livewire\Attributes\On;
 use Livewire\Attributes\Rule;
 use Livewire\Component;
 
@@ -19,19 +22,10 @@ class CreateQuiz extends Component
     {
         $this->validate();
 
-        $slug = Str::slug($this->topic);
+        $quiz = $this->createQuiz();
 
-        $existingQuiz = Quiz::where('slug', $slug)->first();
-
-        if($existingQuiz) {
-            $slug = $slug . '-' . time();
-        }
-
-        $quiz = Quiz::create([
-            'slug' => $slug,
-            'topic' => $this->topic,
-            'messages' => [],
-        ]);
+        $service = new QuestionsService($quiz);
+        $service->generateQuestions();
 
         $this->topic = '';
         $this->showModal = false;
@@ -43,6 +37,26 @@ class CreateQuiz extends Component
     {
         $this->topic = '';
         $this->showModal = false;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function createQuiz(): Quiz
+    {
+        $slug = Str::slug($this->topic);
+
+        $existingQuiz = Quiz::where('slug', $slug)->first();
+
+        if ($existingQuiz) {
+            $slug = $slug.'-'.time();
+        }
+
+        return Quiz::create([
+            'slug' => $slug,
+            'topic' => $this->topic,
+            'messages' => [],
+        ]);
     }
 
     public function render()
