@@ -8,39 +8,23 @@ use OpenAI\Laravel\Facades\OpenAI;
 
 class QuestionsService
 {
-    protected int $numberOfQuestions = 5;
     protected Quiz $quiz;
 
     protected array $messages = [];
     protected array $questions = [];
-    protected bool $isDone = false;
 
     public function __construct(Quiz $quiz)
     {
         $this->quiz = $quiz;
     }
 
-    /**
-     * This function is responsible for generating a quiz
-     * 1. It should generate the system prompt
-     * 2. It should generate the questions
-     * 3. It should update the quiz messages in the database
-     * 4. It should update the quiz questions in the database
-     * 5. It should return itself
-     *
-     * @return void
-     */
     public function generateQuestions(): bool
     {
         try {
-            $this->isDone = false;
-
             $this
                 ->setMessages()
                 ->getQuestionsFromAI()
                 ->saveQuestion();
-
-            $this->isDone = true;
 
             return true;
         } catch (Exception $e) {
@@ -48,12 +32,6 @@ class QuestionsService
             return false;
         }
     }
-
-    public function done(): bool
-    {
-        return $this->isDone;
-    }
-
 
     protected function setMessages(): static
     {
