@@ -1,6 +1,9 @@
 <div>
     <div class="flex flex-col max-w-4xl mx-auto bg-slate-100 rounded-lg shadow">
-        <div class="text-lg font-bold border-b border-slate-300 p-8">{{ $question->question }}</div>
+        <div class="flex justify-between items-center border-b border-slate-300 p-8 gap-4">
+            <div class="text-lg font-bold ">{{ $question->question }}</div>
+            <div class="min-w-8">{{ $currentQuestionIndex }} / {{ $questions->count() }}</div>
+        </div>
 
         <ul class="flex flex-col gap-8 p-8">
             @foreach($question->options as $key => $option)

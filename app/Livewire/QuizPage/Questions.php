@@ -5,6 +5,7 @@ namespace App\Livewire\QuizPage;
 use App\Models\Question;
 use App\Models\Quiz;
 use Illuminate\Support\Collection;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class Questions extends Component
@@ -25,8 +26,9 @@ class Questions extends Component
 
     public function mount(Quiz $quiz): void
     {
+        dump('Mounting questions');
         $this->quiz = $quiz;
-        $this->questions = $quiz->questions->shuffle();
+        $this->questions = $quiz->questions;
 
 
         $this->nextQuestion();
@@ -54,10 +56,8 @@ class Questions extends Component
         if($this->currentQuestionIndex >= $this->questions->count()) {
             return;
         }
-
+        dump('Next question', $this->currentQuestionIndex, $this->questions);
         $this->question = $this->questions->get($this->currentQuestionIndex);
-        dump($this->questions);
-        dump($this->currentQuestionIndex);
         $this->currentQuestionIndex++;
         $this->showAnswer = false;
         $this->userAnswer = '';
@@ -65,6 +65,18 @@ class Questions extends Component
         if($this->currentQuestionIndex >= $this->questions->count()) {
             $this->hasNextQuestion = false;
         }
+    }
+
+    #[On('questions.added')]
+    public function addQuestions(): void
+    {
+        dump('Adding questions');
+        $questions = $this->quiz->fresh()->questions()->take(5)->get();
+
+        $this->questions->push(...$questions);
+        $this->hasNextQuestion = true;
+
+        dump($this->questions->count());
     }
 
     public function render()
