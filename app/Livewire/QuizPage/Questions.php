@@ -21,6 +21,8 @@ class Questions extends Component
 
     public $currentQuestionIndex = 0;
 
+    public $hasNextQuestion = true;
+
     public function mount(Quiz $quiz): void
     {
         $this->quiz = $quiz;
@@ -49,10 +51,20 @@ class Questions extends Component
 
     public function nextQuestion(): void
     {
+        if($this->currentQuestionIndex >= $this->questions->count()) {
+            return;
+        }
+
         $this->question = $this->questions->get($this->currentQuestionIndex);
+        dump($this->questions);
+        dump($this->currentQuestionIndex);
         $this->currentQuestionIndex++;
         $this->showAnswer = false;
         $this->userAnswer = '';
+
+        if($this->currentQuestionIndex >= $this->questions->count()) {
+            $this->hasNextQuestion = false;
+        }
     }
 
     public function render()
