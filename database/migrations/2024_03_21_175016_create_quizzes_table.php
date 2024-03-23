@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('slug')->unique();
             $table->string('topic');
+            $table->string('image_path')->nullable();
             $table->integer('points')->default(0);
             $table->dateTime('archived_at')->nullable();
             $table->timestamps();

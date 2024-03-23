@@ -5,7 +5,11 @@
             <x-stat :value="$quiz->points" icon="o-trophy" />
         </div>
         <x-slot:figure>
-            <img src="https://picsum.photos/500/200" />
+            @if($quiz->image_path)
+                <img src="{{ asset($quiz->image_path) }}" />
+            @else
+                <img src="https://picsum.photos/500/200" />
+            @endif
         </x-slot:figure>
 
         <x-slot:actions class="flex items-center justify-items-center">

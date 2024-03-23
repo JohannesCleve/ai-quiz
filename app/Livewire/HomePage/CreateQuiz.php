@@ -2,6 +2,7 @@
 
 namespace App\Livewire\HomePage;
 
+use App\Jobs\CreateImage;
 use App\Jobs\GenerateQuestionsJob;
 use App\Models\Quiz;
 use App\Services\QuestionsService;
@@ -23,6 +24,8 @@ class CreateQuiz extends Component
         $this->validate();
 
         $quiz = $this->createQuiz();
+
+        CreateImage::dispatch($quiz);
 
         $service = new QuestionsService($quiz);
         $service->generateQuestions();
